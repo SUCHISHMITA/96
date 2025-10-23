@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Activity: Loops, Methods, and Functions</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: #cc5c5c; border-bottom: 2px solid #ccc; padding-bottom: 5px; }
+        h2 { color: #5c8c8c; }
+        .output-box { border: 1px dashed #ddd; padding: 10px; margin-bottom: 15px; background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <h1>Combined JavaScript Activity</h1>
+
+    <h2>Section 1: Loops and In-built Methods (Tinu's Task)</h2>
+    
+    <div class="output-box">
+        <h3>1. Random Set of Numbers (Using a Loop)</h3>
+        <div id="randomNumbersOutput"></div>
+    </div>
+    
+    <div class="output-box">
+        <h3>2. Current Date (Using the Date Method)</h3>
+        <div id="currentDateOutput"></div>
+    </div>
+
+    <div class="output-box">
+        <h3>3. Rounded Random Number (Using Math Methods)</h3>
+        <div id="roundedRandomNumberOutput"></div>
+    </div>
+
+    <hr>
+
+    <h2>Section 2: Function and Conditional (Carol's Task)</h2>
+
+    <div class="output-box">
+        <h3>1. Call with Two Arguments (5 * 10)</h3>
+        <div id="outputTwoArgs"></div>
+    </div>
+    
+    <div class="output-box">
+        <h3>2. Call with One Argument (5 * undefined)</h3>
+        <div id="outputOneArg"></div>
+    </div>
+
+
+    <script>
+        // ==========================================================
+        // === SECTION 1: LOOPS AND METHODS (Tinu's Task)
+        // ==========================================================
+
+        // --- 1. Random Set of Numbers (using a Loop) ---
+        let numbersHTML = "<ul>";
+        for (let i = 0; i < 5; i++) {
+            // Generate a random integer between 1 and 100
+            let randomNumber = Math.floor(Math.random() * 100) + 1;
+            numbersHTML += `<li>Random Value ${i + 1}: ${randomNumber}</li>`;
+        }
+        numbersHTML += "</ul>";
+        document.getElementById("randomNumbersOutput").innerHTML = numbersHTML;
+
+
+        // --- 2. Current Date (using In-built Methods) ---
+        const today = new Date();
+        const dateString = today.toDateString(); 
+        document.getElementById("currentDateOutput").innerHTML = `Today's Date is: <strong>${dateString}</strong>`;
+
+
+        // --- 3. Rounded Random Number (using In-built Methods) ---
+        const rawRandom = Math.random() * 100;
+        // Use Math.round() to round it to the nearest integer
+        const roundedNumber = Math.round(rawRandom);
+        const outputText = `Raw Value: ${rawRandom.toFixed(4)} <br> **Rounded Value:** ${roundedNumber}`;
+        document.getElementById("roundedRandomNumberOutput").innerHTML = outputText;
+
+        
+        // ==========================================================
+        // === SECTION 2: FUNCTION AND CONDITIONAL (Carol's Task)
+        // ==========================================================
+
+        /**
+         * Multiplies two numbers, defaulting the second to 1 if it's undefined.
+         */
+        function multiply(num1, num2) {
+            // **Conditional Statement** to check if the second parameter is undefined
+            if (num2 === undefined) {
+                num2 = 1; 
+                console.log("Function Note: Second parameter was undefined and defaulted to 1.");
+            }
+            return num1 * num2;
+        }
+
+        // --- 1. Two arguments provided ---
+        const resultTwoArgs = multiply(5, 10);
+        document.getElementById("outputTwoArgs").innerHTML = 
+            `Call: <code>multiply(5, 10)</code><br>Result: <strong>${resultTwoArgs}</strong>`;
+
+        
+        // --- 2. Only one argument provided (num2 is undefined) ---
+        const resultOneArg = multiply(5); // num2 is implicitly 'undefined'
+        document.getElementById("outputOneArg").innerHTML = 
+            `Call: <code>multiply(5)</code><br>Action: The **conditional check** sets the missing parameter to 1.<br>Result: <strong>${resultOneArg}</strong>`;
+
+    </script>
+
+</body>
+</html>
